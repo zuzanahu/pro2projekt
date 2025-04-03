@@ -9,7 +9,9 @@
 <a th:href="@{/users/add}">Add New User</a>
 
 <ul>
-    <li th:each="user: ${users}" th:text="${user.name}"></li>
+    <li th:each="user: ${users}">
+        <a th:href="@{'/users/' + ${user.id}}" th:text="${user.name}"></a>
+    </li>
 </ul>
 
 </body>
