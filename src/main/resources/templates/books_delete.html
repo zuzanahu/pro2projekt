@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reading list</title>
+    <link rel="stylesheet" type="text/css" href="/index.css">
+</head>
+<body>
+<div th:insert="~{fragments/header}"></div>
+
+<h1>Opravdu chcete smazat tuto knihu?</h1>
+<p>
+    <strong>Název:</strong> <span th:text="${book.title}"></span><br/>
+    <strong>Autor:</strong> <span th:text="${book.author}"></span>
+</p>
+<form th:action="@{/books/{id}/delete(id=${book.id})}" method="post">
+    <button type="submit">Ano, smazat</button>
+    <a th:href="@{/books/}">Ne, zpět</a>
+</form>
+</body>
+</html>

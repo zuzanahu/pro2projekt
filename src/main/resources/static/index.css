@@ -5,4 +5,11 @@ nav {
 
 table {
     border-collapse: collapse;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+
+}
+
+td,th {
+    padding: 0.5em;
 }

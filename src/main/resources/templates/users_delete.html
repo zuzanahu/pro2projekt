@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/index.css">
 </head>
 <body>
+<div th:insert="~{fragments/header}"></div>
 <h1 th:text="${user != null ? 'Do you really want to delete user: '
                             + user.name : 'User not found.'}"></h1>
 

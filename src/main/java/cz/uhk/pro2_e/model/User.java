@@ -2,6 +2,8 @@ package cz.uhk.pro2_e.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -15,6 +17,9 @@ public class User {
     private String username;
     private String password;
     private String role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Book> books;
 
     public String getUsername() {
         return username;
@@ -54,5 +59,13 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

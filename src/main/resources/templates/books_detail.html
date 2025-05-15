@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reading list</title>
+    <link rel="stylesheet" type="text/css" href="/index.css">
+</head>
+<body>
+<div th:insert="~{fragments/header}"></div>
+
+<h1 th:text="${book.title}"></h1>
+<h2 th:text="${book.author}"></h2>
+
+<!-- Sekce pro recenze -->
+<h3>Reviews</h3>
+<div th:each="review : ${book.reviews}">
+    <p th:text="${review.comment}"></p>
+    <small>Dne [[${review.date}]]</small>
+</div>
+
+<h3>Quotes</h3>
+<div th:each="quote : ${book.quotes}">
+    <p th:text="${quote.content}"></p>
+    <small>Dne [[${quote.dateAdded}]], strana: [[${quote.pageNumber}]]</small>
+</div>
+
+
+<a th:href="@{/books/{id}/edit(id=${book.id})}">Editovat údaje o knize, citáty a recenze</a>
+<br>
+<a th:href="@{/books/}">Zpět na seznam</a>
+</body>
+</html>
+
+

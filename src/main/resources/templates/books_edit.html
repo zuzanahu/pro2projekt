@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reading list</title>
+    <link rel="stylesheet" type="text/css" href="/index.css">
+</head>
+<body>
+<div th:insert="~{fragments/header}"></div>
+
+<h1>Upravit knihu</h1>
+
+<!-- Formulář pro úpravu knihy -->
+<form th:action="@{/books/save}" th:object="${book}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <label>Název:</label>
+    <input type="text" th:field="*{title}" required/><br/>
+    <label>Autor:</label>
+    <input type="text" th:field="*{author}" required/><br/>
+    <button type="submit">Uložit změny</button>
+</form>
+
+<!-- Sekce pro recenze -->
+<h2>Recenze</h2>
+<div th:each="review : ${book.reviews}">
+    <p th:text="${review.comment}"></p>
+    <small>Dne [[${review.date}]]</small>
+    <a th:href="@{/books/{bookId}/delete-review/{reviewId}(bookId=${book.id}, reviewId=${review.id})}">Smazat</a>
+</div>
+
+<form th:action="@{/books/{id}/add-review(id=${book.id})}" th:object="${newReview}" method="post">
+    <textarea th:field="*{comment}" maxlength="1000"></textarea>
+    <button type="submit">Add Review</button>
+</form>
+
+<h3>Přidat citát</h3>
+<div th:each="quote : ${book.quotes}">
+    <p th:text="${quote.content}"></p>
+    <small>Dne [[${quote.dateAdded}]], strana: [[${quote.pageNumber}]]</small>
+    <a th:href="@{/books/{bookId}/delete-quote/{quoteId}(bookId=${book.id}, quoteId=${quote.id})}">Smazat</a>
+</div>
+<form th:action="@{/books/{id}/add-quote(id=${book.id})}" th:object="${newQuote}" method="post">
+    <textarea th:field="*{content}" maxlength="1000"></textarea>
+    <input type="number" th:field="*{pageNumber}" />
+    <button type="submit">Add Quote</button>
+</form>
+
+<a th:href="@{/books/}">Zpět na seznam</a>
+</body>
+</html>

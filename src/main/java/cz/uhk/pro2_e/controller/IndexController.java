@@ -18,11 +18,6 @@ public class IndexController {
         return "test";
     }
 
-    @GetMapping("/admin")
-    public String admin() {
-        return "admin";
-    }
-
     @GetMapping("/login")
     public String login() {
         return "login";

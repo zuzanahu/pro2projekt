@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reading list</title>
+    <link rel="stylesheet" type="text/css" href="/index.css">
+</head>
+<body>
+<div th:insert="~{fragments/header}"></div>
+<h1>Přidat knihu</h1>
+<form th:action="@{/books/save}" th:object="${book}" method="post">
+    <label>Název knihy:</label>
+    <input type="text" th:field="*{title}" required/><br/>
+    <label>Autor:</label>
+    <input type="text" th:field="*{author}" required/><br/>
+    <button type="submit">Uložit</button>
+</form>
+<a th:href="@{/books/}">Zpět na seznam</a>
+</body>
+</html>

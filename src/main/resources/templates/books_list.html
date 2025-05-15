@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reading list</title>
+    <link rel="stylesheet" type="text/css" href="/index.css">
+</head>
+<body>
+<div th:insert="~{fragments/header}"></div>
+
+<h1>Vaše knihy</h1>
+<a th:href="@{/books/add}">Přidat knihu</a>
+<table>
+    <tr>
+        <th>Název</th>
+        <th>Autor</th>
+        <th>Akce</th>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td><a th:text="${book.title}" th:href="@{'/books/' + ${book.id}}"></a>
+        </td>
+        <td th:text="${book.author}"></td>
+        <td>
+            <a th:href="@{'/books/' + ${book.id} + '/edit'}">Upravit</a> |
+            <a th:href="@{'/books/' + ${book.id} + '/delete'}">Smazat</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

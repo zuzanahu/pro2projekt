@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/index.css">
 </head>
 <body>
+<div th:insert="~{fragments/header}"></div>
 <h1 th:text="${user.id == 0 ? 'New User' : 'Edit User'}"></h1>
 
 <form method="post" th:action="@{/users/save}" th:object="${user}">
