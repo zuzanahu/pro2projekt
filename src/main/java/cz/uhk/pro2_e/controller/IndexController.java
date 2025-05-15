@@ -28,5 +28,4 @@ public class IndexController {
         return "403";
     }
 
-
 }
