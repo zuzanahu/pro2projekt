@@ -25,7 +25,7 @@ class Pro2EApplicationTests {
     //A simple sanity check test that will fail if the application context cannot start.
     @Test
     void contextLoads() {
-        //if the context is creating your controller
+        //check if the context is creating controllers
         assertThat(controller).isNotNull();
         assertThat(bookController).isNotNull();
         assertThat(userController).isNotNull();

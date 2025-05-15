@@ -28,6 +28,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 @AutoConfigureMockMvc
 class SecurityConfigTest {
 
+    // Tests using MockMvc are for testing whether Spring handles the incoming HTTP request and hands it off to controller
     @Autowired
     private MockMvc mockMvc;
 

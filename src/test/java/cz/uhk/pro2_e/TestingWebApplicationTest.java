@@ -19,6 +19,8 @@ class TestingWebApplicationTest {
     @Autowired
     private MockMvc mockMvc;
 
+    // Tests using MockMvc are for testing whether Spring handles the incoming HTTP request and hands it off to controller
+    // This test will fail because we have authorization layer, so that is the correct behavior
     @Test
     void shouldReturnDefaultHomePage() throws Exception {
         mockMvc.perform(get("/"))
